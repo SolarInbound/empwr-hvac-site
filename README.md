@@ -18,7 +18,7 @@ GitHub Pages, served from the root of `main`. This is temporary.
 
 ## Moving to Vercel
 
-Nothing in this repo is tied to GitHub Pages. The move is three steps and needs no code change.
+Nothing in this repo is tied to GitHub Pages. The move is three steps and needs no code change. (Vercel and HubSpot are both possible next homes; pick one.)
 
 1. **Import the repo.** In Vercel, choose Add New, then Project, then import this repo. Framework preset: **Other**. Leave the build command and output directory empty. Vercel serves the repo root as is.
    - If the Vercel team cannot see this GitHub org, transfer the repo to EMPWR's org first (Settings, then Transfer), or push a copy there.
@@ -36,3 +36,15 @@ After the domain shows as valid in Vercel:
 - Delete `CNAME` and `.nojekyll`. They do nothing on Vercel.
 
 Rollback: put the GitHub Pages records back. Pages keeps serving until it is turned off.
+
+## Moving to HubSpot
+
+HubSpot does not host a repo. The page becomes a HubSpot website page, so this move is a short rebuild, not a re-point. The files here are the source for it.
+
+1. **Upload the assets.** Put the three images in the HubSpot file manager.
+2. **Make the template.** In the design manager, create a coded template from `index.html` and a stylesheet from `styles.css`. Point the image and stylesheet paths at the uploaded files.
+3. **Swap the contact links for a form.** Every call to action here is a `mailto:info@empwrhvac.com` link. Replace the main one (`#contact`) with a HubSpot form so submissions land in the CRM. The HubSpot tracking code is added by HubSpot on its own pages.
+4. **Connect the domain.** In HubSpot, open Settings, then Content, then Domains & URLs. Connect `www.empwrhvac.com` as the primary website domain and set `empwrhvac.com` to redirect to it. HubSpot shows the exact DNS records.
+5. **Switch DNS at GoDaddy.** Replace only the web records (`A` on `@`, `CNAME` on `www`) with the ones HubSpot shows. **Do not touch the MX or TXT records.**
+
+Then turn off GitHub Pages as described above. Rollback is the same: put the GitHub Pages records back.
